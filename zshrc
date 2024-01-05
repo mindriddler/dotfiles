@@ -203,9 +203,8 @@ function crypt-unlock() {
     echo "Attempting to unlock with key: $1"
     git-crypt unlock "$1"
     if [ $? -eq 0 ]; then
-        chmod 0700 ~/.ssh
         chmod 700 ~/.ssh/*
-        echo "Unlock successful, permissions set recursively to 700."
+        echo "Unlock successful, permissions set for ~/.ssh/*"
     else
         echo "Failed to unlock git-crypt. Check your key and permissions."
     fi
