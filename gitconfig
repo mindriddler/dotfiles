@@ -7,7 +7,7 @@
 	token = GITHUB_TOKEN
 [core]
 	editor = micro
-	excludesfile = /home/mindriddler/.gitignore
+	excludesfile = /home/mindriddler/.gitignore_global
 [init]
 	defaultBranch = main
 [push]

@@ -1,8 +1,7 @@
 - clean: ['~']
 
 - link:
-    ~/.profile: profile
-    ~/.bashrc: bashrc
+    ~/.gitignore_global: gitignore_global
     ~/.gitconfig: gitconfig
     ~/.ssh/config:
       path: ssh/config
