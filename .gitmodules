@@ -1,19 +1,19 @@
 [submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
-	ignore = dirty
+path = dotbot
+url = https://github.com/anishathalye/dotbot
+ignore = dirty
 [submodule "meta/dotbot-gitcrypt"]
-	path = meta/dotbot-gitcrypt
-	url = https://gitlab.com/gnfzdz/dotbot-gitcrypt.git
+path = meta/dotbot-gitcrypt
+url = https://gitlab.com/gnfzdz/dotbot-gitcrypt.git
 [submodule "meta/dotbot-include"]
-	path = meta/dotbot-include
-	url = https://gitlab.com/gnfzdz/dotbot-include.git
+path = meta/dotbot-include
+url = https://gitlab.com/gnfzdz/dotbot-include.git
 [submodule "meta/dotbot-sync"]
-	path = meta/dotbot-sync
-	url = https://github.com/j1r1k/dotbot-sync.git
+path = meta/dotbot-sync
+url = https://github.com/j1r1k/dotbot-sync.git
 [submodule "meta/dotbot-conditional"]
-	path = meta/dotbot-conditional
-	url = https://gitlab.com/gnfzdz/dotbot-conditional.git
+path = meta/dotbot-conditional
+url = https://gitlab.com/gnfzdz/dotbot-conditional.git
 [submodule "dotbot-sync"]
-	path = dotbot-sync
-	url = https://github.com/j1r1k/dotbot-sync.git
+path = dotbot-sync
+url = https://github.com/j1r1k/dotbot-sync.git
