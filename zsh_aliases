@@ -1,0 +1,28 @@
+# Alias all the things
+alias cat='bat --style full --theme OneHalfDark --color always --decorations always --paging never'
+alias orphan='pamac remove -uco --no-confirm'
+alias ls='eza --git --long --header --icons'
+alias df='duf'
+alias ps='procs'
+alias du='dua'
+alias makevenv='python -m venv venv'
+alias activate_venv='source venv/bin/activate'
+alias git-commit='/home/mindriddler/.config/czg/scope.sh && czg --config=/home/mindriddler/.config/czg/cz.json'
+alias wakatime-cli='wakatime'
+alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
+alias trash="rmtrash"
+alias del="rmtrash"
+
+# Source all the things
+source /opt/google-cloud-cli/completion.zsh.inc
+source /opt/google-cloud-cli/path.zsh.inc
+source /etc/profile.d/google-cloud-cli.sh
+source /usr/share/doc/git-extras/git-extras-completion.zsh
+eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
+. /opt/asdf-vm/asdf.sh
+
+# Export all the things
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US:en
+export LC_ALL=en_US.UTF-8

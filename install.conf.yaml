@@ -5,9 +5,11 @@
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.ssh/config:
-        path: ssh/config
-        create: true
+      path: ssh/config
+      create: true
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
+    ~/.zsh_aliases: zsh_aliases
+    ~/.zsh_secrets: zsh_secrets
 
 
