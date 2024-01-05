@@ -5,12 +5,10 @@
       relink: true
       create: true
 
-
 # Git
 - link:
     ~/.gitignore_global: gitignore_global
     ~/.gitconfig: gitconfig
-
 
 # ZSH
 - link:
@@ -19,9 +17,13 @@
     ~/.zsh_aliases: zsh_aliases
     ~/.zsh_secrets: zsh_secrets
 
+# Config
+
+
+# SSH
 - link:
     ~/.ssh: ssh
-    mode: 700
 
+# Shell
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
