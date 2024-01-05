@@ -200,15 +200,20 @@ precmd() {
 }
 
 function crypt-unlock() {
-    echo "Attempting to unlock with key: $1"
     git-crypt unlock "$1"
     if [ $? -eq 0 ]; then
-        chmod 700 ~/.ssh/*
-        echo "Unlock successful, permissions set for ~/.ssh/*"
+        for file in ~/.ssh/*; do
+            perm=$(stat -c '%a' "$file")
+            if [ "$perm" -ne "700" ]; then
+                chmod 700 "$file"
+            fi
+        done
+        echo "Unlock successful, permissions verified for ~/.ssh/*"
     else
         echo "Failed to unlock git-crypt. Check your key and permissions."
     fi
 }
+
 
 
 #neofetch
