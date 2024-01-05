@@ -199,6 +199,11 @@ precmd() {
   unset gcp_on
 }
 
+function crypt-unlock() {
+    git-crypt unlock "$1"
+    chmod 700 ~/.ssh/*
+}
+
 #neofetch
 
 
