@@ -13,6 +13,7 @@ alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias trash="rmtrash"
 alias del="rmtrash"
 alias crypt="git-crypt"
+alias crypt-unlock="git-crypt unlock && chmod 700 ~/.ssh/*"
 alias dotbot="dotbot -c ~/Repos/dotfiles/install.conf.yaml"
 
 # Source all the things
