@@ -12,6 +12,7 @@ alias wakatime-cli='wakatime'
 alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias trash="rmtrash"
 alias del="rmtrash"
+alias git-crypt="crypt"
 
 # Source all the things
 source /opt/google-cloud-cli/completion.zsh.inc
