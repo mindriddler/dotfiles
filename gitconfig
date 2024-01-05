@@ -1,0 +1,22 @@
+[user]
+	email = fredrikmagnusson3@gmail.com
+	name = Fredrik Magnusson
+	username = mindriddler
+[github]
+	user = mindriddler
+	token = GITHUB_TOKEN
+[core]
+	editor = micro
+	excludesfile = /home/mindriddler/.gitignore
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[sequence]
+	editor = interactive-rebase-tool
+[color]
+	ui = true
+[fetch]
+	prune = true
