@@ -1,0 +1,320 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# ~/.config/starship.toml
+
+# Customizing the prompt (including desired modules at desired position and sequence):
+# *** Borrowed from a design seen in a zsh (should be from https://github.com/romkatv/powerlevel10k)
+format = """
+[╭╴](fg:#505050)[$os]($style)[ ](fg:#505050 bold)[$battery$username$hostname$sudo$directory\
+$git_branch$git_commit$git_state$git_metrics$git_status$container$shell$env_var$custom$jobs$memory_usage$time$cmd_duration\
+$fill $line_break]($style)\
+[├───](fg:#505050)[ ](fg:#505050 bold)[$kubernetes$vcsh$fossil_branch$hg_branch$pijul_channel$docker_context$package$c\
+$cmake$cobol$daml$dart$deno$dotneti$elixir$ulm$erlang$fennel$golang$guix_shell\
+$haskell$haxe$helm$java$julia$kotlin$gradle$lua$nim$nodejs$ocaml$opa$perl$php\
+$pulumi$purescript$python$raku$rlang$red$ruby$rust$scala$swift$terraform$vlang\
+$vagrant$zig$buf$nix_shell$conda$meson$spack$aws$gcloud$openstack$azure$crystal\
+$line_break]($style)\
+[╰───](fg:#505050)[ ](fg:#505050 bold)[$status$localip$character]($style)
+"""
+
+# - '$line_break', i.e. everything from the next line on refers to the second line of the prompt.
+#   - '\n' for a line break could work too on your system, but it is just not a 'starship' module. 
+#   - Just let the module do the correct line break.
+# - Some modules listed above will not show up (all the time), as their default value is 'disabled = true' or
+#   they are only displayed under certain conditions.
+#   They have to be enabled manually, e.g. see below "# Customizing and enabling some modules used above"
+#   https://starship.rs/config/
+
+# Don't be confused if you see this toml file via web browser on Starship website, gist, ... and you don't see any "real" symbols here.
+# If Nerd-fonts are already installed on your system (e.g. MesloLG Nerd Font, FiraCode Nerd Font, ...) it should work
+
+
+# Inserts a blank line between shell prompts:
+add_newline = true
+
+# Customization and activation of some modules:
+# Listed in the order of their position in the module row above
+[os]
+format = "[$symbol]($style) "
+style = "fg:BBBBBB"
+disabled = false
+
+
+# ~/.config/starship.toml
+
+[battery]
+full_symbol = '🔋'
+charging_symbol = '⚡️'
+discharging_symbol = '💀'
+
+[[battery.display]]
+threshold = 25
+style = 'bold red'
+
+[[battery.display]]
+threshold = 50
+style = 'bold yellow'
+
+[[battery.display]]
+threshold = 75
+style = 'bold green'
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+CentOS = ""
+Debian = ""
+DragonFly = "🐉" # ""
+Emscripten = "🔗"
+EndeavourOS = "" # ""
+Fedora = ""
+FreeBSD = ""
+Garuda = ""
+Gentoo = ""
+HardenedBSD = "聯"
+Illumos = "🐦"
+Linux = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = "🌘"
+Mint = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = "" # ""
+OpenCloudOS = "☁️"
+openEuler = ""
+openSUSE = ""
+OracleLinux = "⊂⊃"
+Pop = "" # ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+Redox = "🧪"
+Solus = "" # " "
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = ""
+
+[username]
+format = '[$user]($style) '
+style_user = 'green bold'
+style_root = 'red bold'
+show_always = false
+disabled = false
+
+[hostname]
+format = '[$ssh_symbol](green bold)[$hostname](fg:green bold) [](cyan) '
+ssh_only = true
+ssh_symbol = '󰯅 '#' ' # '⇒' # ' ' # 'ﬁ⇒'
+#trim_at = '.companyname.com'
+disabled = false
+
+[sudo]
+style = 'red bold'
+symbol = '  ❯ ' # ' ❯ ' 
+disabled = false
+
+[directory]
+format = '[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style) '
+style = 'cyan bold'
+read_only_style = 'cyan'
+read_only = '' #''  # ' ' # ' ''
+home_symbol = ' ~'
+truncation_length = 10
+truncation_symbol = '/'
+truncate_to_repo = true
+repo_root_style	= 'cyan bold' #'fg:#E04D27 bold'
+use_os_path_sep = true
+disabled = false
+fish_style_pwd_dir_length = 0
+
+[git_branch]
+format = '[ $symbol $branch(:$remote_branch)]($style) '
+style = 'bold purple' # 'fg:#E04D27'
+symbol = " " # "" #""
+#ignore_branches = ['master', 'main']
+#truncation_length = 8
+#truncation_symbol = ''
+
+[git_commit]
+format = '[\($hash$tag\)]($style) '
+style = 'bold green' #'fg:#E04D27'
+commit_hash_length = 8
+tag_symbol = ' ' # ' ''
+disabled = false
+
+[git_metrics]
+format = '[\[+$added/]($added_style)[-$deleted\]]($deleted_style) '
+added_style = 'bold green'#'fg:#E04D27'
+deleted_style = 'bold red' #'fg:#E04D27'
+disabled = false
+
+[git_status]
+format = '[$all_status$ahead_behind]($style) '
+style = 'bold red' #'fg:#E04D27'
+conflicted = '${count} '
+ahead = '${count}⇡ '
+behind = '${count}⇣ '
+diverged = '⇕${ahead_count}⇡${behind_count}⇣ '
+up_to_date = '✓'
+untracked = '[${count} ](red)' # 'ﳇ' ' ' # '? '
+stashed = '[${count} ](fg:#A52A2A)' #  # '📦 '# ' ' # ' ' # ' ' # ' ' 
+modified = '[${count}󰷉 ](yellow)' # '📝' # '! '
+staged = '[${count} ](green)' # '+ '
+renamed = '${count}  ' # '﫦 ' # ' '
+deleted = '${count}🗑 ' # '🗑 ' '- ' # '﯊ '
+disabled = false
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
+rebase = 'REBASING'
+merge = 'MERGING'
+revert = 'REVERTING'
+bisect = 'BISECTING'
+am = 'AM'
+am_or_rebase = 'AM/REBASE'
+style = 'bold yellow'
+
+
+[jobs]
+format = '[ $number$symbol]($style) '
+style = 'blue'
+symbol = '󰜎' # '廒' # '󰜎' # '' # '✦' # '省'
+symbol_threshold = 1
+number_threshold = 4
+disabled = false
+
+[memory_usage]
+format = '[ $symbol ${ram} ${swap}]($style) '
+style = 'purple dimmed'
+symbol = '󰍛 󰾵' # '﬙ 北' # '﬙ 痢' # '﬙ / 󰾵' # '󰍛 󰾵' # '﬙ 󰾴' # '﬙ 󰾶' # '﬙ 󰾷' '﬙ 󰣂'
+threshold = 75
+disabled = false
+
+[cmd_duration]
+format = '[  $duration]($style) '
+style = 'yellow'
+min_time = 500
+disabled = true
+
+[fill]
+style = 'fg:#505050'
+symbol = '─'
+
+[status]
+format = '[$symbol$status $hex_status  $signal_number-$signal_name]($style) '
+style = 'red'
+symbol = '✘ '
+disabled = false
+
+[localip]
+format = '[$localipv4](green bold) '
+ssh_only = true
+disabled = false
+
+[gcloud]
+format = 'on [$symbol$project (\[$active\])]($style) '
+#format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+symbol = '󱇶 ' #'󰞶 '
+detect_env_vars = ['gcp_on']
+[gcloud.region_aliases]
+europe-north1 = 'eu-n1'
+europe-west1 = 'eu-w1'
+
+[docker_context]
+symbol = " "
+format = "  [$symbol$context]($style) "
+style = "blue bold"
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_folders = []
+disabled = false
+
+[aws]
+symbol = "  "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[haskell]
+symbol = "λ "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+#pyenv_version_name = true
+format = '[${symbol}python ${version} (\[$virtualenv\] )]($style)'
+style = "bold yellow"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "./.venv/bin/python", "python", "python3", "python2"]
+detect_extensions = ["py"]
+version_format = "v${raw}"
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
+
+[nodejs]
+format = "via [󰎙 Node.js $version](bold green) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+
+[terraform]
+symbol = "󱁢 "
+detect_extensions = ['tf', 'tfplan', 'tfstate']
+version_format = 'v${raw}'
+format = 'via [$symbol$version]($style) '
+detect_folders = ['infrastructure', 'terraform', 'Infrastructure', '.terraform']
+style = 'bold 105'
