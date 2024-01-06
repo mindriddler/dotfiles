@@ -5,6 +5,13 @@
       relink: true
       create: true
 
+# Shell
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [tar -czvf ~/.cache/zsh4humans_backup.tar.gz -C ~/.cache zsh4humans, Compressing old zsh4humans to backup tarball]
+  - [rm -rf ~/.cache/zsh4humans, Removing old zsh4humans]
+  - [tar -xzvf zsh4humans.tar.gz -C ~/.cache, Extracting zsh4humans]
+
 # Git
 - link:
     ~/.gitignore_global: gitignore_global
@@ -18,12 +25,18 @@
     ~/.zsh_secrets: zsh_secrets
 
 # Config
+- link:
+    ~/.config/neofetch/config.conf: neofetch.conf
+    ~/.config/starship.toml: starship.toml
+    ~/.config/czg: czg
 
+# Cache
+# - link:
+#     ~/.cache/zsh4humans: zsh4humans
 
 # SSH
 - link:
     ~/.ssh: ssh
 
-# Shell
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
+#- shell:
+#  - [rm -rf ./zsh4humans, Removing zsh4humans folder from repo folder]
