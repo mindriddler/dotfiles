@@ -30,13 +30,3 @@
     ~/.config/starship.toml: starship.toml
     ~/.config/czg: czg
 
-# Cache
-# - link:
-#     ~/.cache/zsh4humans: zsh4humans
-
-# SSH
-- link:
-    ~/.ssh: ssh
-
-#- shell:
-#  - [rm -rf ./zsh4humans, Removing zsh4humans folder from repo folder]
