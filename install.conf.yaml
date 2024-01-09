@@ -11,6 +11,9 @@
   - [tar -czvf ~/.cache/zsh4humans_backup.tar.gz -C ~/.cache zsh4humans, Compressing old zsh4humans to backup tarball]
   - [rm -rf ~/.cache/zsh4humans, Removing old zsh4humans]
   - [tar -xzvf zsh4humans.tar.gz -C ~/.cache, Extracting zsh4humans]
+  - [cp -r ssh ~/.ssh, Copying ssh keys]
+  - [chmod 700 ~/.ssh, Setting permissions on ssh folder]
+  - [chmod 600 ~/.ssh/*, Setting permissions on ssh keys]
 
 # Git
 - link:
@@ -21,8 +24,8 @@
 - link:
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
-    ~/.zsh_aliases: zsh_aliases
-    ~/.zsh_secrets: zsh_secrets
+    ~/.zshaliases: zshaliases
+    ~/.zshsecrets: zshsecrets
 
 # Config
 - link:

@@ -127,7 +127,7 @@ alias ls="${aliases[ls]:-ls} -A"
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
 #zstyle 'z4h:powerlevel10k' disable 'yes'
-source /home/$(whoami)/.zsh_aliases
+source /home/$(whoami)/.zshaliases
 
 #if [[ "$(hostname)" == "arch-desktop" ]] || [[ "$(hostname)" == "arch-laptop" ]]; then
 #  source /home/$(whoami)/.zsh_exports
